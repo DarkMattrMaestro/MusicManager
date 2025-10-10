@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!player (old).py
+!player (old2).py
+!player.py
+!*/yt_downloader.py
+
+!*/
