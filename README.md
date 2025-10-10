@@ -1,5 +1,8 @@
 # Maestro's Music Manager
 
+> [!Note]
+> The Python scripts automatically install the libraries upon which they depend. See the top few lines of code to see the libraries that are installed on run.
+
 This is a music manager I made that fits with how I store music on my filesystem. It does not have any other advantages over common music managers.
 
 This project may be revamped or massively altered at any time. If you wish to use it for yourself and want it to be stable, I suggest making a fork. Otherwise, feel free to use my setup!
