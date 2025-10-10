@@ -35,7 +35,7 @@ except:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "pynput"])
     from pynput.keyboard import Key, Listener, GlobalHotKeys, HotKey
 
-# Try to install pyinput
+# Try to install pywinctl
 try:
     import pywinctl as pwc
 except:
