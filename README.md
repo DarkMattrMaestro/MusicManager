@@ -13,6 +13,12 @@ This project may be revamped or massively altered at any time. If you wish to us
 > **`download/yt_downloader.py`**
 > 
 > A tool to download music en-masse given a list of URLs (song or playlist URLs). It does not work on DRM protected sources.
+> To use it, simply add your source URLs in the URLS list, then run the python script. For example:
+> ```
+> URLS = [
+>     "https://www.youtube.com/@artism6843/videos"
+> ]
+> ```
 
 ## Folder Structure
 
