@@ -1,6 +1,6 @@
 # pip install python-vlc
 
-IGNORED_FOLDERS = ['download']
+IGNORED_FOLDERS = ['download', 'discs']
 ALLOWED_AUDIO_FORMATS = ['wav', 'm4a', 'mp3', 'aac', 'flac', 'ogg']
 CONDITION_CHECK_TIMESTEP = 2 # in seconds
 PROGRESS_STEPS = 50
