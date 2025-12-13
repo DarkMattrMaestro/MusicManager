@@ -13,13 +13,18 @@ This project may be revamped or massively altered at any time. If you wish to us
 > 
 > A simple terminal-based music player using Python.
 
-> **`download/yt_downloader.py`**
+> **`general_downloader.py`**
 > 
-> A tool to download music en-masse given a list of URLs (song or playlist URLs). It does not work on DRM protected sources.
-> To use it, simply add your source URLs in the URLS list, then run the python script. For example:
-> ```
-> URLS = [
->     "https://www.youtube.com/@artism6843/videos"
+> A tool to download music en-masse given a list of songs defined in `songs.json`. It does not work on DRM protected sources.
+> To use it, simply add an entry with the author and title (use file-system-friendly characters), backup source URLs, and any of a set few pre-defined modifiers, then run the python script. For example:
+> ```json
+> [
+>     {
+>         "Title": "Tubular Bells (part one)",
+>         "Author": "Mike Oldfield",
+>         "URLs": ["https://www.youtube.com/watch?v=ZJkNsWCay4c"],
+>         "Modifiers": {}
+>     }
 > ]
 > ```
 
@@ -31,11 +36,21 @@ Root folder
 │ ├─{playlist/author name}
 │ │ └─...
 │ └─{song}
-├─{song}
-├─download
-│ ├─yt_downloader.py
-│ ├─{song downloaded by `yt_downloader.py`}
-│ └─{playlist downloaded by `yt_downloader.py`}
-│   └─{song downloaded by `yt_downloader.py`}
-└─player.py
+│
+├─discs
+│ └─{disc name}
+│   └─{song}
+│
+├─song-library
+│ ├─downloaded
+│ │ └─{author}
+│ │   └─{song}.{format}
+│ ├─downloaded-raw
+│ │ └─{author}
+│ │   └─{song}.{format}
+│ └─local
+│
+├─general_downloader.py
+├─player.py
+└─songs.json
 ```
