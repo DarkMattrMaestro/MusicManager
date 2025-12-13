@@ -27,6 +27,10 @@ This project may be revamped or massively altered at any time. If you wish to us
 >     }
 > ]
 > ```
+> $\color{pink}{\text{Red}}$ => Failed to locate or download the song.<br>
+> $\color{lightyellow}{\text{Yellow}}$ => The song is already downloaded, no action required.<br>
+> $\color{lightblue}{\text{Blue}}$ => The raw song is already downloaded, modifiers were applied successfully.<br>
+> $\color{lightgreen}{\text{Green}}$ => The raw song was downloaded successfully and modifiers were applied successfully.
 
 ## Folder Structure
 
