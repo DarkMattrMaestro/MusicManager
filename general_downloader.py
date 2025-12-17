@@ -198,17 +198,21 @@ def download_audio():
                 success.append(-1)
     
     print("\nDownload Results:")
+    num_failed = 0
     for i in range(len(loaded_songs)):
         colour_code = ""
         if success[i] == -1:
             colour_code = "\033[31m"
+            num_failed += 1
         elif success[i] == 0:
             colour_code = "\033[32m"
         elif success[i] == 1:
             colour_code = "\033[33m"
         elif success[i] == 2:
             colour_code = "\033[34m"
-        print(" " + colour_code + str(loaded_songs[i].get("Title", "_")) + "   -   " + str(loaded_songs[i].get("Author", "_")) + "\033[0m")
+        print(f"{colour_code}({i + 1}/{len(loaded_songs)})-   " + str(loaded_songs[i].get("Title", "_")) + "   -   " + str(loaded_songs[i].get("Author", "_")) + "\033[0m")
+    
+    print(f"\n{len(loaded_songs) - num_failed}/{len(loaded_songs)} songs loaded successfully.")
 
 
 
