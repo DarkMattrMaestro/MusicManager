@@ -170,7 +170,7 @@ def copy_to_discs(s_title: str, s_author: str, s_discs: list[str]) -> int:
             success.append(1)
             continue
         else:
-            print(f"Copying to disc \"{disc}\".")
+            if ArgumentParser.verbose: print(f"Copying to disc \"{disc}\".")
             disc_out_path = os.path.join(DISCS_DIR, disc, f"{s_title} - {s_author}.mp3")
             os.makedirs(os.path.join(DISCS_DIR, disc), exist_ok=True)
             if get_song_extension(s_title, s_author, DOWNLOAD_DIR) == ".mp3": # TODO: Generalize for any wanted extension
@@ -249,7 +249,7 @@ def download_audio():
         if verify_local_song(s_title, s_author, RAW_DOWNLOAD_DIR, False) >= 0 and verify_local_song(s_title, s_author, DOWNLOAD_DIR, False) < 0:
             # Raw song downloaded already
             print("\033[33mRaw song already downloaded, applying modifiers and copying.\033[0m")
-            success.append(2 if modify_copy_raw_download(song, s_title, s_author, s_discs) == 0 else -1)
+            success.append(2 if modify_copy_raw_download(song, s_title, s_author) == 0 else -1)
         elif "URLs" not in song or len("".join(song["URLs"])) < 1 or not isinstance(song["URLs"], list):
             print("\033[33mNo valid `URLs` provided in JSON, assuming local file.\033[0m")
             success.append(verify_local_song(s_title, s_author, LOCAL_DIR, True))
@@ -280,7 +280,7 @@ def download_audio():
                             print(f"\033[33mFailed to download from `{url}`.\033[0m")
                         else:
                             print(f"\033[32mDownloaded the song from `{url}`.\033[0m")
-                            success.append(modify_copy_raw_download(song, s_title, s_author, s_discs))
+                            success.append(modify_copy_raw_download(song, s_title, s_author))
                             downloaded = True
                             break
                 if not downloaded:
