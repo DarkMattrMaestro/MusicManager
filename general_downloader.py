@@ -127,6 +127,13 @@ def modify_copy_raw_download(song, s_title: str, s_author: str) -> int:
                     
             stream = ffmpeg.input(in_path, **input_kwargs)
             
+            if "FadeIn" in song["Modifiers"]:
+                try:
+                    falloff = float(song["Modifiers"]["Start"])
+                    stream = ffmpeg.filter(stream, "afade", **{'enable': f'between(t,{0},{0+falloff})', 'type': 'in', 'st': 0, 'duration': falloff})
+                except:
+                    print("\033[31mError: Invalid `FadeIn` modifier!\033[0m")
+            
             if "Mute" in song["Modifiers"]:
                 if not isinstance(song["Modifiers"]["Mute"], list):
                     song["Modifiers"]["Mute"] = [song["Modifiers"]["Mute"]]
@@ -142,7 +149,7 @@ def modify_copy_raw_download(song, s_title: str, s_author: str) -> int:
                     except:
                         print("\033[31mError: Invalid `Mute` modifier!\033[0m")
             
-        ffmpeg.output(stream, out_path).run()
+        ffmpeg.output(stream, out_path, **{"metadata": f"artist={s_author}", "metadata:g": f"title={s_title}"}).run()
     except FileNotFoundError as e:
         print(f"An error occurred: {e}")
         return -1
